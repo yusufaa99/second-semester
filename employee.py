@@ -1,3 +1,5 @@
+# this project is implemented with respect to pholimorphism understanding
+
 class Employee:
     def __init__(self, name, salary):
         self.name = name
@@ -20,6 +22,9 @@ class Manager(Employee):
     def work(self):
         return f"{self.name} Manages all the organisation and he also attend meating"
     
+    def Planning(self):
+        return f"{self.name} Setting specific goals, defining strategies, and mapping out the exact steps required to reach organizational targets"
+
 class Developer(Employee):
     def __init__(self, name, salary, programming_lang):
         super().__init__(name, salary)
@@ -28,6 +33,10 @@ class Developer(Employee):
     def work(self):
         return f"{self.name} is {self.programming_lang} Software developer"
     
+    def debugging(self):
+        return f"{self.name} always debug code"
+    
+
     def bonus(self):
         base_bonus = super().bonus()
         
@@ -46,3 +55,9 @@ for emp in employees:
     print(f"\n{emp}")
     print(f"work: {emp.work()}")
     print(f"Bonus: ${emp.bonus():.2f}")
+
+    if isinstance(emp, Developer):
+        print(f"Debugging: {emp.debugging()}")
+    
+    elif isinstance(emp, Manager):
+        print(f"Planning: {emp.Planning()}")

@@ -1,3 +1,5 @@
+from abc import ABC, abstractmethod
+
 class Dog:
     sound = "wooh wooh wooh"
 
