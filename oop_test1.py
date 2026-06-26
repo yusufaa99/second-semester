@@ -82,3 +82,11 @@ print(calc.mult(2,5,6,10))
 print(calc.add(2,4))
 print(calc.add(2,4,8))
 print(calc.add(2,4,5,7))
+
+
+s = "GFG"
+it = iter(s)
+
+# print(next(it))
+# print(next(it))
+# print(next(it))
