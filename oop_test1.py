@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from enum import Enum
 class Dog:
     sound = "wooh wooh wooh"
 
@@ -90,3 +90,148 @@ it = iter(s)
 # print(next(it))
 # print(next(it))
 # print(next(it))
+
+# enum implementation
+class Day(Enum):
+    MONDAY = 1
+    TUESDAY = 2
+    WEDNESDAY = 3
+    THURSDAY = 4
+    FRIDAY = 5
+    SARTUDAY = 6
+    SUNDAY = 7
+
+def current_day(day):
+
+    if day == Day.MONDAY:
+        print(f"Today is: {Day.MONDAY.name}")
+
+current_day(Day.MONDAY)
+
+# custom iteration implementation
+class Even_num:
+    def __init__(self, limit):
+        self.limit = limit
+        self.n = 2
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.n > self.limit:
+            raise StopIteration
+        
+        x = self.n
+        self.n += 2
+        return x
+
+even = Even_num(20)
+
+for num in even:
+    print(num)
+
+
+lst = [10,20,30,40,50,60,70,80,90,100]
+it = iter(lst)
+
+print("\nList iteration\n")
+while True:
+    try:
+        print(next(it))
+    except StopIteration:
+        print('End of thr iteration')
+        break
+
+
+
+
+class Validator:
+    @abstractmethod
+    def validate():
+        pass
+
+    @abstractmethod
+    def get_validate():
+        pass
+
+class NameValidator(Validator):
+    def validate(self):
+        return "Name validator"
+    
+    def get_validate(self):
+        return "Get Name Validator"
+
+class AgeValidator(Validator):
+    def validate(self):
+        return "Age validator"
+    
+    def get_validate(self):
+        return "Get Age Validator"
+
+validator = NameValidator()
+value = validator.validate()
+print(value)
+# def validate(name):
+#     clean = name.strip()
+#     if not clean:
+#         return False, None
+    
+# name = "     muhammad sani yunus     "
+# print(validate(name))
+
+class Account(ABC):
+    @abstractmethod
+    def deposite():
+        pass
+
+    @abstractmethod
+    def withdraw():
+        pass
+
+    @abstractmethod
+    def balance():
+        pass
+
+    @abstractmethod
+    def info():
+        pass
+
+class Jaiz(Account):
+    def __init__(self, name, acc_no):
+        self.__name = name
+        self.acc_no = acc_no
+
+    def deposite(self):
+        pass
+
+    def withdraw(self):
+        pass
+
+    def balance(self):
+        pass
+
+    def info(self):
+        print(f"Name: {self.__name}, Account: {self.acc_no}")
+    
+         
+if __name__ == "__main__":
+    jaiz = Jaiz("Khalid", "2121000012")
+    jaiz.info()
+
+
+class Student:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    def __add__(self, other):
+        x1 = self.x + other.x
+        y1 = self.y + other.y
+        x3 = Student(x1, y1)
+        return x3
+
+if __name__ == "__main__":
+    std1 = Student(20, 25)
+    std2 = Student(10, 30)
+    std3 = std1 + std2
+    print(std3.x, std3.y)
